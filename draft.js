@@ -524,13 +524,30 @@ for (i = 0; i < 30; i++) {
     }
 };
 
+var pickOdds = [
+    [140, 140, 140, 125, 105, 90, 60, 60, 60, 30, 20, 10, 10, 10],
+    [134, 134, 134, 122, 105, 92, 63, 63, 63, 33, 22, 11, 11],
+];
 
 
 
+$("#lotteryBtn").click(function() {
+var firstBall = Math.floor(Math.random() * 1000)
+var sumOdds = 0;
+firstTeam = 1
+for (i =0; i < pickOdds[0].length; i++) {
+    sumOdds += pickOdds[0][i];
 
-        // lottery();
-        // $("#lotteryBtn").click(function() {
-        //     shuffle(lotteryTeams)
-        //     lottery();
-        //   });
+    if (firstBall <= sumOdds) {break; }
+    firstTeam = i+1;
+};
+
+
+for (j=0; j<teamArray.length; j++) {
+    if (teamArray[j].pick == firstTeam) {
+        console.log(teamArray[j].team)
+    }
+}
+
+});
 
