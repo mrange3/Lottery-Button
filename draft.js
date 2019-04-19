@@ -335,11 +335,6 @@ var players = [
 // Teams /////////////////////////////////////////////////////////////////////
 var teamArray = [
     {
-        team: "Atlanta Hawks",
-        pick: 5,
-        logo: "atl",
-    },
-    {
         team: "New York Knicks",
         pick: 1,
         logo: "nyk",
@@ -358,6 +353,11 @@ var teamArray = [
         team: "Chicago Bulls",
         pick: 4,
         logo: "chi",
+    },
+    {
+        team: "Atlanta Hawks",
+        pick: 5,
+        logo: "atl",
     },
     {
         team: "Washington Wizards",
@@ -485,6 +485,16 @@ var teamArray = [
         logo: "mil",
     },
 ]
+
+var pickOrder = [];
+var lotteryTeams = [];
+
+for (i=0; i<15; i++) {
+    if (teamArray[i].pick <15) {
+        lotteryTeams.push(teamArray[i]);
+    }
+}
+
 // ///////////////// Picks Loop/////////////////////////
 
 
@@ -524,30 +534,47 @@ for (i = 0; i < 30; i++) {
     }
 };
 
+
 var pickOdds = [
-    [140, 140, 140, 125, 105, 90, 60, 60, 60, 30, 20, 10, 10, 10],
-    [134, 134, 134, 122, 105, 92, 63, 63, 63, 33, 22, 11, 11],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 46, 952],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9, 906, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 12, 126, 861, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 5, 29, 189, 776, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 16, 80, 243, 659, 0, 0, 0, 0],
+    [0, 0, 0, 0, 6, 38, 151, 341, 464, 0, 0, 0, 0, 0],
+    [0, 0, 0, 22, 88, 206, 372, 312, 0, 0, 0, 0, 0, 0],
+    [0, 0, 71, 168, 267, 296, 197, 0, 0, 0, 0, 0, 0, 0],
+    [0, 201, 260, 257, 196, 86, 0, 0, 0, 0, 0, 0, 0, 0],
+    [479, 278, 148, 72, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [119, 119, 119, 114, 105, 96, 72, 72, 72, 40, 28, 14, 14, 14],
+    [127, 127, 127, 119, 105, 94, 67, 67, 67, 36, 24, 12, 12, 12],
+    [134, 134, 134, 122, 105, 92, 63, 63, 63, 33, 22, 11, 11, 11],
+    [140, 140, 140, 125, 105, 90, 60, 60, 60, 30, 20, 10, 10, 10],    
 ];
 
 
 
 $("#lotteryBtn").click(function() {
-var firstBall = Math.floor(Math.random() * 1000)
+for(l = 0; l < pickOdds.length; l++) {
+var multiplier = pickOdds[l].reduce(function(a, b) { return a + b; }, 0);
+var firstBall = Math.floor(Math.random() * multiplier)
+console.log(firstBall)
 var sumOdds = 0;
-firstTeam = 1
-for (i =0; i < pickOdds[0].length; i++) {
-    sumOdds += pickOdds[0][i];
-
+for (i =0; i < lotteryTeams.length; i++) {
     if (firstBall <= sumOdds) {break; }
-    firstTeam = i+1;
+    var firstTeam = i+1;
+    sumOdds += pickOdds[l][i];
+
 };
+console.log(firstTeam);
+
+pickOrder.unshift(lotteryTeams[firstTeam-1]);
+lotteryTeams.splice(firstTeam-1,1,);
+pickOdds[l].splice(firstTeam-1,1,)
+
+console.log(pickOrder);
+console.log(teamArray);
 
 
-for (j=0; j<teamArray.length; j++) {
-    if (teamArray[j].pick == firstTeam) {
-        console.log(teamArray[j].team)
-    }
-}
-
-});
+}});
 
