@@ -488,16 +488,20 @@ var teamArray = [
 
 var pickOrder = [];
 var lotteryTeams = [];
+var nonLotto =[];
 
-for (i=0; i<15; i++) {
+for (i=0; i<teamArray.length; i++) {
     if (teamArray[i].pick <15) {
         lotteryTeams.push(teamArray[i]);
+    } else {
+        nonLotto.push(teamArray[i]);
     }
 }
 
 // ///////////////// Picks Loop/////////////////////////
 
-
+function lottery() {
+ $("#draftHolder").empty();
 
 for (i = 0; i < 30; i++) {
 
@@ -533,7 +537,8 @@ for (i = 0; i < 30; i++) {
 
     }
 };
-
+}
+lottery();
 
 var pickOdds = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 46, 952],
@@ -555,6 +560,7 @@ var pickOdds = [
 
 
 $("#lotteryBtn").click(function() {
+    
 for(l = 0; l < pickOdds.length; l++) {
 var multiplier = pickOdds[l].reduce(function(a, b) { return a + b; }, 0);
 var firstBall = Math.floor(Math.random() * multiplier)
@@ -572,9 +578,13 @@ pickOrder.unshift(lotteryTeams[firstTeam-1]);
 lotteryTeams.splice(firstTeam-1,1,);
 pickOdds[l].splice(firstTeam-1,1,)
 
+
 console.log(pickOrder);
 console.log(teamArray);
 
-
+var newOrder = pickOrder.concat(nonLotto)
+console.log(newOrder)
+// teamArray = newOrder.slice(0)
+// lottery()
 }});
 
