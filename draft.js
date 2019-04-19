@@ -532,7 +532,14 @@ for (i = 0; i < 30; i++) {
 };
 }
 
+// pick 1-4 and then 
+
 var pickOdds = [
+    [140, 140, 140, 125, 105, 90, 60, 60, 60, 30, 20, 10, 10, 10],    
+    [134, 134, 134, 122, 105, 92, 63, 63, 63, 33, 22, 11, 11, 11],
+    [127, 127, 127, 119, 105, 94, 67, 67, 67, 36, 24, 12, 12, 12],
+    [119, 119, 119, 114, 105, 96, 72, 72, 72, 40, 28, 14, 14, 14],
+
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 46, 952],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9, 906, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 1, 12, 126, 861, 0, 0],
@@ -543,10 +550,6 @@ var pickOdds = [
     [0, 0, 71, 168, 267, 296, 197, 0, 0, 0, 0, 0, 0, 0],
     [0, 201, 260, 257, 196, 86, 0, 0, 0, 0, 0, 0, 0, 0],
     [479, 278, 148, 72, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [119, 119, 119, 114, 105, 96, 72, 72, 72, 40, 28, 14, 14, 14],
-    [127, 127, 127, 119, 105, 94, 67, 67, 67, 36, 24, 12, 12, 12],
-    [134, 134, 134, 122, 105, 92, 63, 63, 63, 33, 22, 11, 11, 11],
-    [140, 140, 140, 125, 105, 90, 60, 60, 60, 30, 20, 10, 10, 10],    
 ];
 
 lottery()
@@ -567,15 +570,19 @@ for (i =0; i < lotteryTeams.length; i++) {
 
 };
 
-pickOrder.unshift(lotteryTeams[firstTeam-1]);
+
+pickOrder.push(lotteryTeams[firstTeam-1]);
 lotteryTeams.splice(firstTeam-1,1,);
 pickOdds[l].splice(firstTeam-1,1,)
 
 
-
 }
-console.log(pickOrder);
-finalOrder = pickOrder.concat(nonLotto);
+
+var topFour = pickOrder.slice(0,4)
+var bottomTen = pickOrder.slice(4)
+var lotteryOrder = topFour.concat(bottomTen.reverse())
+console.log(lotteryOrder);
+finalOrder = lotteryOrder.concat(nonLotto);
 
 $("#draftHolder").empty();
 
