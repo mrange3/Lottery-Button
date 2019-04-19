@@ -552,6 +552,7 @@ var pickOdds = [
 lottery()
 
 $("#lotteryBtn").click(function() {
+    $(this).prop("disabled",true);
 var pickOrder =[];
 var finalOrder = [];
 
@@ -624,3 +625,7 @@ if (i < 14) {
 
 }
 };
+
+$("#resetBtn").click(function() {
+    location.reload(true)
+});
