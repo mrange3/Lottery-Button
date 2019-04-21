@@ -578,10 +578,14 @@ for (i =0; i < lotteryTeams.length; i++) {
 };
 
 
+
 pickOrder.push(lotteryTeams[firstTeam]);
 lotteryTeams.splice(firstTeam,1,);
-pickOdds[l].splice(firstTeam,1,)
 teamOdds.splice(firstTeam,1)
+
+for (x = 0; x <pickOdds.length; x++) {
+    pickOdds[x].splice(firstTeam,1)
+}
 }
 
 teamOdds.reverse();
@@ -598,8 +602,11 @@ for (j = 0; j < teamOdds.length; j++) {
     };  
     pickOrder.push(lotteryTeams[secondTeam]);
     lotteryTeams.splice(secondTeam,1,);
-    teamOdds[j].splice(secondTeam,1,)
-  
+
+    for (y = 0; y <teamOdds.length; y++) {
+        teamOdds[y].splice(secondTeam,1)
+    };
+    
 }
 
 var topFour = pickOrder.slice(0,4)
