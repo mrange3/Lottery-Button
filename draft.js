@@ -540,17 +540,24 @@ var pickOdds = [
     [127, 127, 127, 119, 105, 94, 67, 67, 67, 36, 24, 12, 12, 12],
     [119, 119, 119, 114, 105, 96, 72, 72, 72, 40, 28, 14, 14, 14],
 
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 46, 952],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 9, 906, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 12, 126, 861, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 5, 29, 189, 776, 0, 0, 0],
-    [0, 0, 0, 0, 0, 2, 16, 80, 243, 659, 0, 0, 0, 0],
-    [0, 0, 0, 0, 6, 38, 151, 341, 464, 0, 0, 0, 0, 0],
-    [0, 0, 0, 22, 88, 206, 372, 312, 0, 0, 0, 0, 0, 0],
-    [0, 0, 71, 168, 267, 296, 197, 0, 0, 0, 0, 0, 0, 0],
-    [0, 201, 260, 257, 196, 86, 0, 0, 0, 0, 0, 0, 0, 0],
-    [479, 278, 148, 72, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
+
+var teamOdds = [
+    [479, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [278, 201, 0, 0, 0, 0, 0, 0, 0, 0],
+    [148, 260, 71, 0, 0, 0, 0, 0, 0, 0],
+    [72, 257, 168, 22, 0, 0, 0, 0, 0, 0],
+    [22, 196, 267, 88, 6, 0, 0, 0, 0, 0],
+    [0, 86, 296, 206, 38, 2, 0, 0, 0, 0],
+    [0, 0, 197, 372, 151, 16, 1, 0, 0, 0],
+    [0, 0, 0, 312, 341, 80, 5, 1, 0, 0],
+    [0, 0, 0, 0, 464, 243, 29, 1, 1, 0],
+    [0, 0, 0, 0, 0, 659, 189, 12, 1, 1],
+    [0, 0, 0, 0, 0, 0, 776, 126, 4, 1],
+    [0, 0, 0, 0, 0, 0, 0, 861, 9, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0, 906, 46],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 952],
+]
 
 lottery()
 
@@ -565,17 +572,34 @@ var firstBall = Math.floor(Math.random() * multiplier)
 var sumOdds = 0;
 for (i =0; i < lotteryTeams.length; i++) {
     if (firstBall <= sumOdds) {break; }
-    var firstTeam = i+1;
+    var firstTeam = i;
     sumOdds += pickOdds[l][i];
 
 };
 
 
-pickOrder.push(lotteryTeams[firstTeam-1]);
-lotteryTeams.splice(firstTeam-1,1,);
-pickOdds[l].splice(firstTeam-1,1,)
+pickOrder.push(lotteryTeams[firstTeam]);
+lotteryTeams.splice(firstTeam,1,);
+pickOdds[l].splice(firstTeam,1,)
+teamOdds.splice(firstTeam,1)
+}
 
+teamOdds.reverse();
+console.log(teamOdds)
+for (j = 0; j < teamOdds.length; j++) {
+    var multiplier2 = teamOdds[j].reduce(function(a, b) { return a + b; }, 0);
+    var secondBall = Math.floor(Math.random() * multiplier2)
+    var sumOdds2 = 0;
+    for (k =0; k < lotteryTeams.length; k++) {
+        if (secondBall <= sumOdds2) {break; }
+        var secondTeam = k;
+        sumOdds += teamOdds[j][k];
 
+    };  
+    pickOrder.push(lotteryTeams[secondTeam]);
+    lotteryTeams.splice(secondTeam,1,);
+    teamOdds[j].splice(secondTeam,1,)
+  
 }
 
 var topFour = pickOrder.slice(0,4)
@@ -588,6 +612,7 @@ $("#draftHolder").empty();
 
 for (i = 0; i < 30; i++) {
 
+var pickDiff = finalOrder[i].pick - (i+1);
 
     var teamPickString = '<div class="row mb-2">';
     teamPickString += '<div class="col-2 m-0 mobileHide p-0"></div>';
@@ -599,7 +624,7 @@ for (i = 0; i < 30; i++) {
     teamPickString += '<div class="col-3  m-0 px-1 py-0">';
     teamPickString += '<div class="card rounded-0 d-flex flex-row card-background p-1" id="teamSpot' + [i + 1] + '">';
     teamPickString += '<div class="mr-auto p-0 mobileHide inline align-middle"><img src="images/logos/' + finalOrder[i].logo + '.png" height="25px" width="25px">' + " " + finalOrder[i].team + '</div>'
-    teamPickString += '<div class="px-1 mobileHide draftLogo inline align-middle"><small>' + " " + '</small></div>'
+    teamPickString += '<div class="px-1 mobileHide draftLogo inline align-middle"id="pickDifferent' + [i + 1] + '"><small>'  + '</small></div>'
     teamPickString += '</div>';
     teamPickString += '</div>';
     teamPickString += '<div class="col m-0 pr-1 pl-0">';
@@ -615,10 +640,22 @@ for (i = 0; i < 30; i++) {
 
     if (i < 14) {
         $("#pickNumber" + [i + 1]).addClass("primary-color-dark")
+        if (pickDiff > 0) {
+            $("#pickDifferent" + [i + 1]).addClass("text-success")
+            $("#pickDifferent" + [i + 1]).text("+"+pickDiff)
+        } else if (pickDiff < 0) {
+            $("#pickDifferent" + [i + 1]).addClass("text-danger")
+            $("#pickDifferent" + [i + 1]).text(""+pickDiff)
+        } else {
+            $("#pickDifferent" + [i + 1]).text("-")
+    
+        }
+    
     } else {
         $("#pickNumber" + [i + 1]).addClass("bg-dark")
     
     }
+
     
 };
 
