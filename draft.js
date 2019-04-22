@@ -1,4 +1,4 @@
-var players = [
+var playersArray = [
     {
         name: "Zion Williamson",
         position: "PF",
@@ -60,7 +60,7 @@ var players = [
         wt: 218,
         school: "Duke",
         birthday: "",
-        rank: 5,
+        rank: 6,
         collegelogo: "duke",
 
     },
@@ -83,7 +83,7 @@ var players = [
         wt: 233,
         school: "Virginia",
         birthday: "",
-        rank: 6,
+        rank: 5,
         collegelogo: "virginia",
 
     },
@@ -338,156 +338,187 @@ var teamArray = [
         team: "New York Knicks",
         pick: 1,
         logo: "nyk",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Cleveland Cavaliers",
         pick: 2,
         logo: "cle",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Phoenix Suns",
         pick: 3,
         logo: "phx",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Chicago Bulls",
         pick: 4,
         logo: "chi",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Atlanta Hawks",
         pick: 5,
         logo: "atl",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Washington Wizards",
         pick: 6,
         logo: "was",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "New Orleans Pelicans",
         pick: 7,
         logo: "nop",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Memphis Grizzlies",
         pick: 8,
         logo: "mem",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Dallas Mavericks",
         pick: 9,
         logo: "dal",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Minnesota Timberwolves",
         pick: 10,
         logo: "min",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "LA Lakers",
         pick: 11,
         logo: "lal",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Charlotte Hornets",
         pick: 12,
         logo: "cha",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Miami Heat",
         pick: 13,
         logo: "mia",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Sacramento Kings",
         pick: 14,
         logo: "sac",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Detroit Pistons",
         pick: 15,
         logo: "det",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Orlando Magic",
         pick: 16,
         logo: "orl",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Brooklyn Nets",
         pick: 17,
         logo: "bro",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Indiana Pacers",
         pick: 18,
         logo: "ind",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "San Antonio Spurs",
         pick: 19,
         logo: "sas",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "LA Clippers",
         pick: 20,
         logo: "lac",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Oklahoma City Thunder",
         pick: 21,
         logo: "okl",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Boston Celtics",
         pick: 22,
         logo: "bos",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Utah Jazz",
         pick: 23,
         logo: "uta",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Philidelphia 76ers",
         pick: 24,
         logo: "phi",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Portland Trailblazers",
         pick: 25,
         logo: "por",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Houston Rockets",
         pick: 26,
         logo: "hou",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Denver Nuggets",
         pick: 27,
         logo: "den",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Golden State Warriors",
         pick: 28,
         logo: "gsw",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Toronto Raptors",
         pick: 29,
         logo: "tor",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
     {
         team: "Milwaulkee Bucks",
         pick: 30,
         logo: "mil",
+        bigBoard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21 ,22, 23, 24, 25, 26, 27, 28, 29, 30],
     },
 ]
 
 var lotteryTeams = [];
 var nonLotto =[];
+var players =[]
 
 for (i=0; i<teamArray.length; i++) {
     if (teamArray[i].pick <15) {
@@ -497,6 +528,20 @@ for (i=0; i<teamArray.length; i++) {
     }
 }
 
+// for (i = 0; i < 30; i++) {
+
+//     for (j = 0; j < 30; j++) 
+//     if (playersArray[j].rank == i+1) {
+//         players.push(playersArray[i])
+//     }
+// }   
+
+
+playersArray.sort(function(a, b){
+    return a.rank-b.rank
+})
+players = playersArray.slice();
+console.log(players)
 // ///////////////// Picks Loop/////////////////////////
 
 function lottery() {
